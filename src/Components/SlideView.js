@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, Text } from 'react-native';
+import { Animated, Text, Easing } from 'react-native';
 
 export default class FadeView extends Component {
     constructor(props) {
@@ -13,7 +13,8 @@ export default class FadeView extends Component {
             this.state.slideAnim,
             {
                 toValue: 1,
-                duration: 5000
+                duration: 1000,
+                easing: Easing.ease
             }
         ).start();
     }
