@@ -60,14 +60,15 @@ export default class TransformView extends Component {
         return (
             <View>
                 <Animated.View 
-                    style={{
+                    style={{                        
                         width: 300,
                         height: 200,
-                        backgroundColor: 'green',
+                        /*backgroundColor: 'green',*/
                         marginBottom: 30,
-                        transform: [ { rotate }, { rotateY: rotate } ]
+                        transform: [ { rotate }, { rotateY: rotate } ],
+                        ...this.props.style
                     }}>
-                    
+                    {this.props.children}
                 </Animated.View>
 
                 
