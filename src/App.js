@@ -4,15 +4,20 @@ import FadeView from './Components/FadeView';
 import SlideView from './Components/SlideView';
 import TransformView from './Components/TransformView';
 import HelloApp from './Components/HelloApp';
+import ResponseView from './Components/ResponseView';
 
 export default class App extends Component {
     state = {  }
     render() {
         return (
             <View
-                style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'lightblue' }}
+                style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'stretch',
+                    backgroundColor: 'lightblue' }}
             >
-                <HelloApp />
+                <ResponseView />
             </View>
         );
     }
