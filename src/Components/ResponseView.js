@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Animated, View } from 'react-native';
+import { Animated, View, Easing } from 'react-native';
 import icon from '../media/doreamon.png';
 
 export default class ResponseView extends Component {
@@ -23,19 +23,36 @@ export default class ResponseView extends Component {
         console.log('====================================');
     }
 
-    onMove(evt) {        
-        console.log('I am moving');
+    onMove(evt) {
         const { locationX, locationY } = evt.nativeEvent;
         const { x, y } = this.state;
-        const marginLeft = locationX - x;
-        const marginTop = locationY - y;
+        const marginLeft = new Animated.Value(locationX - x);
+        const marginTop = new Animated.Value(locationY - y);
         this.setState({
             marginLeft, marginTop
         });
     }
 
     onRelease(evt) {
-        console.log('Stop moving');
+        const anim1 = Animated.timing(
+            this.state.marginLeft,
+            {
+                toValue: 0,
+                timing: 500,
+                easing: Easing.bounce
+            }
+        );
+
+        const anim2 = Animated.timing(
+            this.state.marginTop,
+            {
+                toValue: 0,
+                timing: 500,
+                easing: Easing.bounce
+            }
+        );
+
+        Animated.parallel([anim1, anim2]).start();
     }
     
     render() {
