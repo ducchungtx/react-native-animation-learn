@@ -5,6 +5,7 @@ import SlideView from './Components/SlideView';
 import TransformView from './Components/TransformView';
 import HelloApp from './Components/HelloApp';
 import ResponseView from './Components/ResponseView';
+import HotGirlView from './Components/HotGirlView';
 
 export default class App extends Component {
     state = {  }
@@ -17,7 +18,7 @@ export default class App extends Component {
                     alignItems: 'stretch',
                     backgroundColor: 'lightblue' }}
             >
-                <ResponseView />
+                <HotGirlView />
             </View>
         );
     }
