@@ -31,7 +31,7 @@ export default class HotGirlView extends Component {
     onMove(evt) {
         const { locationX, locationY } = evt.nativeEvent;
         const { x, y } = this.state;
-        const tyle = new Animated.Value(( locationX - x ) / width);
+        const tyle = new Animated.Value(1.5 * ( locationX - x ) / width);
         this.setState({
             rotate: tyle
         })
@@ -52,7 +52,11 @@ export default class HotGirlView extends Component {
         const rotate = this.state.rotate.interpolate({
             inputRange: [-1, 1],
             outputRange: ['-30deg', '30deg']
-        })
+        });
+        const opacity = this.state.rotate.interpolate({
+            inputRange: [-1, 0, 1],
+            outputRange: [0, 1, 0]
+        });
         return (
             <View
                 onStartShouldSetResponder={() => true}
@@ -69,7 +73,7 @@ export default class HotGirlView extends Component {
             >
             <Animated.Image
                 source={h1}
-                style={{ height: 200, width: 150, transform: [{ rotate }] }}            
+                style={{ height: 200, width: 150, opacity, transform: [{ rotate }] }}            
             />
             </View>
         );
